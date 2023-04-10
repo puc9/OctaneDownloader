@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using System.Threading;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -39,12 +39,12 @@ namespace OctaneTester
             var optimalNumberOfParts = Engine.GetOptimalNumberOfParts(Url).Result;
             seriLog.Information("Optimal number of parts to download file: {OptimalNumberOfParts}", optimalNumberOfParts);
             #endregion
-            
+
             seriLog.Information("Speed: {Result}", NetworkAnalyzer.GetCurrentNetworkSpeed().Result);
             seriLog.Information("Latency: {Result}", NetworkAnalyzer.GetCurrentNetworkLatency().Result);
             var pauseTokenSource = new PauseTokenSource();
             var cancelTokenSource = new CancellationTokenSource();
-            
+
             var octaneEngine = new Engine(factory, config);
             octaneEngine.DownloadFile(Url, null, pauseTokenSource, cancelTokenSource).Wait(cancelTokenSource.Token);
         }

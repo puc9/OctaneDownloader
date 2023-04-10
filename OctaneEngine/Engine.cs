@@ -1,7 +1,7 @@
 ﻿/*
  * The MIT License (MIT)
  * Copyright (c) 2015 Greg James
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -58,7 +58,7 @@ namespace OctaneEngine
             _factory = factory;
             _config = config;
         }
-        
+
         #region Helpers
         private ILoggerFactory createLoggerFactory(ILoggerFactory loggerFactory)
         {
@@ -106,7 +106,7 @@ namespace OctaneEngine
 
                 return (responseLength, rangeSupported);
             }
-            
+
         }
         private HttpClient createHTTPClient(OctaneConfiguration config, ILoggerFactory factory, string url)
         {
@@ -162,7 +162,7 @@ namespace OctaneEngine
                 DenseProgressBar = false,
                 DisplayTimeInRealTime = false
             };
-            
+
             var pbar = config.ShowProgress
                 ? new ProgressBar(config.Parts, "Downloading File...", options)
                 : null;
@@ -219,9 +219,9 @@ namespace OctaneEngine
             numParts = Math.Min(numParts, Environment.ProcessorCount);
             return numParts;
         }
-        
+
         /// <summary>
-        ///     The core octane download function. 
+        ///     The core octane download function.
         /// </summary>
         /// <param name="url">The string url of the file to be downloaded.</param>
         /// <param name="outFile">The output file name of the download. Use 'null' to get file name from url.</param>
@@ -251,7 +251,7 @@ namespace OctaneEngine
             var _client = createHTTPClient(_config, factory, url);
             int tasksDone = 0;
             #endregion
-            
+
             #region ServicePoint Configuration
             logger.LogInformation($"Server file name: {filename}.");
             ServicePointManager.Expect100Continue = false;
@@ -262,12 +262,12 @@ namespace OctaneEngine
                 ServicePointManager.ReusePort = true;
             #endif
             #endregion
-            
+
             logger.LogInformation($"TOTAL SIZE: {NetworkAnalyzer.prettySize(responseLength)}");
             logger.LogInformation($"PART SIZE: {NetworkAnalyzer.prettySize(partSize)}");
-            
+
             stopwatch.Start();
-            
+
             //Create memory mapped file to hold the file
             using (var mmf = MemoryMappedFile.CreateFromFile(filename, FileMode.OpenOrCreate, null, responseLength, MemoryMappedFileAccess.ReadWrite))
             {
@@ -320,7 +320,7 @@ namespace OctaneEngine
                             await client.ReadResponse(message, (0, 0), cancellation_token, pause_token.Token);
                         }
                     }
-                    
+
                     success = true;
                     logger.LogInformation("File downloaded successfully.");
                 }

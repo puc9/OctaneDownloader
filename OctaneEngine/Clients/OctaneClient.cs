@@ -1,7 +1,7 @@
-/*
+﻿/*
  * The MIT License (MIT)
  * Copyright (c) 2015 Greg James
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -89,12 +89,12 @@ internal class OctaneClient : IClient
             ShowEstimatedDuration = true
         };
         #endregion
-        
+
         if (pauseToken.IsPaused)
         {
             await pauseToken.WaitWhilePausedAsync().ConfigureAwait(false);
         }
-        
+
         stopwatch.Start();
         if (message.IsSuccessStatusCode)
         {
@@ -110,7 +110,7 @@ internal class OctaneClient : IClient
                 }
 
                 using var child = _progressBar?.Spawn(Convert.ToInt32(piece.Item2 - piece.Item1), "Downloading part...", childOptions);
-                
+
                 while (true)
                 {
                     var bytesRead = await streamToRead.ReadAsync(buffer, 0, _config.BufferSize, cancellationToken);

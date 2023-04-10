@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-	    <TargetFrameworks>net461;net472;net6.0;</TargetFrameworks>
-	    <IsPackable>false</IsPackable>
+        <TargetFrameworks>net7.0;</TargetFrameworks>
+        <IsPackable>false</IsPackable>
         <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
     </PropertyGroup>
 

@@ -1,7 +1,7 @@
 ﻿/*
  * The MIT License (MIT)
  * Copyright (c) 2015 Greg James
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -78,7 +78,7 @@ internal class ThrottleStream : Stream, IStream
     protected void Throttle(int bytes)
     {
         _processed += bytes;
-       
+
         _log.LogTrace("Throttle stream processed {Processed} bytes", _processed);
         var targetTime = TimeSpan.FromSeconds((double)_processed / _maxBps);
         var actualTime = _stopwatch.Elapsed;

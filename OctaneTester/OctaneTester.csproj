@@ -1,11 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-	    <TargetFrameworks>net461;net472;net6.0;</TargetFrameworks>
-	    <IsPackable>false</IsPackable>
+        <TargetFrameworks>net7.0;</TargetFrameworks>
+        <IsPackable>false</IsPackable>
         <NeutralLanguage>en-US</NeutralLanguage>
         <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+        <PlatformTarget>AnyCPU</PlatformTarget>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,17 +14,17 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Serilog" Version="2.12.0" />
-      <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
-      <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
-      <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
-      <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+        <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="appsettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>
